@@ -573,11 +573,8 @@ function Set-ConfigSetting {
     $customSettingsArray = $customSettings -split ","
 
     foreach ($customSetting in $customSettingsArray) {
-        $customSettingArray = $customSetting -split "="
-        $customSettingKey = $customSettingArray[0]
-        $customSettingValue = $customSettingArray[1]
-        
-        if ($customConfig.SelectSingleNode("$parentPath/$leafName[@key='$customSettingKey']") -eq $null) {
+	    $customSettingKey, $customSettingValue = $customSetting -split "=",2
+        if ($null -eq $customConfig.SelectSingleNode("$parentPath/$leafName[@key='$customSettingKey']")) {
             if (!$silent) {
                 Write-Host "Creating $customSettingKey and setting it to $customSettingValue"
             }
@@ -798,7 +795,7 @@ function GetTestToolkitApps {
 
         if (!$includeTestFrameworkOnly) {
             # Add Test Libraries
-            $apps += "Microsoft_System Application Test Library.app", "Microsoft_Business Foundation Test Libraries.app", "Microsoft_Tests-TestLibraries.app" | ForEach-Object {
+            $apps += "Microsoft_System Application Test Library.app", "Microsoft_Business Foundation Test Libraries.app", "Microsoft_Tests-TestLibraries.app", "Microsoft_AI Test Toolkit.app" | ForEach-Object {
                 @(get-childitem -Path "C:\Applications\*.*" -recurse -filter $_)
             }
 
