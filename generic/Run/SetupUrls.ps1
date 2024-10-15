@@ -1,5 +1,8 @@
 $sql2019url = 'https://aka.ms/bcdocker-Sql2019Url'
 
+# Use Sql 2022 Dev Edition instead
+$sql2019url = 'https://go.microsoft.com/fwlink/p/?linkid=2215158'
+
 # https://learn.microsoft.com/en-us/troubleshoot/sql/releases/download-and-install-latest-updates#latest-updates-available-for-currently-supported-versions-of-sql-server
 # Click the link under latest cumulative update including the latest GDR update (NOT the link under latest GDR)
 # In the KB article, click Method 3: Microsoft Download Center -> Download Pakcage now -> Download and right click "click here to download manually" -> Copy link address
